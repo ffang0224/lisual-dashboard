@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Camera, Clock, Archive, ChevronLeft, ChevronRight } from 'lucide-react';
 import './App.css'
+import logo from './media/lisual-logo.png';
 
 const ConstructionDashboard = () => {
   const [activeSection, setActiveSection] = useState('live');
@@ -24,7 +25,7 @@ const ConstructionDashboard = () => {
               <iframe 
                 width="100%" 
                 height="600" 
-                src="//www.teleport.io/player?playmode=livetimelapse" 
+                src="//www.teleport.io/api/v2/player?feedid=fekiizlmvw6b&playmode=liveimageloop&imageplayspeed=1fps&playframeskipinterval=day&playframecount=600" 
                 frameBorder="0" 
                 allowFullScreen
                 title="Live Camera Feed"
@@ -68,13 +69,8 @@ const ConstructionDashboard = () => {
   return (
     <div className="dashboard">
       <div className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
-        <button
-          className="toggle-btn"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          {isSidebarOpen ? <ChevronLeft /> : <ChevronRight />}
-        </button>
         <div className="sidebar-content">
+          <img src={logo} className={`logo-sidebar`}></img>
           <h1 className="dashboard-title">Dashboard</h1>
           <nav>
             {sections.map((section) => (
@@ -83,12 +79,18 @@ const ConstructionDashboard = () => {
                 className={`nav-btn ${activeSection === section.id ? 'active' : ''}`}
                 onClick={() => setActiveSection(section.id)}
               >
-                <section.icon className="icon" />
+                <section.icon className="icon" size={24} />
                 <span className="btn-text">{section.name}</span>
               </button>
             ))}
           </nav>
         </div>
+        <button
+          className="toggle-btn"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          {isSidebarOpen ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
+        </button>
       </div>
       
       <div className="main-content">

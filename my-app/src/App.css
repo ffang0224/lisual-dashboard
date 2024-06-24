@@ -9,6 +9,7 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   position: relative;
+  flex-shrink: 0;
 }
 
 .sidebar.open {
@@ -27,11 +28,17 @@
   border: none;
   cursor: pointer;
   color: #3182ce;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar-content {
   padding: 20px;
   padding-top: 50px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .dashboard-title {
@@ -68,10 +75,27 @@
 
 .nav-btn .icon {
   margin-right: 10px;
+  min-width: 24px;
+}
+
+.logo-sidebar{
+  display: flex;
+  width: 100%;
+}
+
+.sidebar.closed .logo-sidebar{
+  opacity: 0;
+}
+.sidebar.closed .nav-btn {
+  justify-content: center;
 }
 
 .sidebar.closed .btn-text {
   display: none;
+}
+
+.sidebar.closed .nav-btn .icon {
+  margin-right: 0;
 }
 
 .main-content {
