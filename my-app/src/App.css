@@ -80,7 +80,7 @@
 
 .logo-sidebar{
   display: flex;
-  width: 100%;
+  max-width: 100%;
 }
 
 .sidebar.closed .logo-sidebar{

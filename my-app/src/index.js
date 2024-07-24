@@ -4,11 +4,30 @@ import './index.css';
 import './styles.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import LandingPage from './LandingPage';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <LandingPage></LandingPage>
+    ),
+  },
+  {
+    path: "dashboard",
+    element: <App></App>,
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
