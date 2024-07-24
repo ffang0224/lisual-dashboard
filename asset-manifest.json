@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/lisual-dashboard/static/css/main.c81b6bd3.css",
+    "main.js": "/lisual-dashboard/static/js/main.fcbe8d3e.js",
+    "static/js/453.ed3810f9.chunk.js": "/lisual-dashboard/static/js/453.ed3810f9.chunk.js",
+    "static/media/lisual-logo.png": "/lisual-dashboard/static/media/lisual-logo.71425102278d10c923b8.png",
+    "index.html": "/lisual-dashboard/index.html",
+    "main.c81b6bd3.css.map": "/lisual-dashboard/static/css/main.c81b6bd3.css.map",
+    "main.fcbe8d3e.js.map": "/lisual-dashboard/static/js/main.fcbe8d3e.js.map",
+    "453.ed3810f9.chunk.js.map": "/lisual-dashboard/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c81b6bd3.css",
+    "static/js/main.fcbe8d3e.js"
+  ]
+}
