@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useCallback} from 'react';
 import { Bell, ChevronDown, Camera, Clock, Archive, ChevronLeft, ChevronRight, Home, Users, Settings, CreditCard, HelpCircle } from 'lucide-react';
 import Calendar from './Calendar.js';
 import './App.css'
@@ -15,6 +15,8 @@ const ConstructionDashboard = () => {
   const [objects, setObjects] = useState({})
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [userdata, setUserData] = useState({})
+  const [isLoading, setIsLoading] = useState(true);
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,6 +40,12 @@ const ConstructionDashboard = () => {
   useEffect(()=>{
     fetchPost();
   }, [])
+  const handleIframeLoad = useCallback(() => {
+    // Set a timeout to hide the loading indicator after 2 seconds
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -66,16 +74,24 @@ const ConstructionDashboard = () => {
             <div className="h-full flex flex-col">
       <h2 className="text-2xl font-semibold mb-4">Inicio</h2>
       <div className="flex justify-center content-center w-full h-screen overflow-hidden">
+        <div className='relative'>
+      {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-200 bg-opacity-100 z-10">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          )}
         <iframe
   src={userdata.livecamURL}
   title="Live Image"
   className={`rounded-lg ${
     userdata.orientation === 'vertical' 
-      ? 'w-1/2 h-screen' 
+      ? 'w-screen h-screen' 
       : 'w-7/8 h-7/8 aspect-video overflow-hidden'
   }`}
+  onLoad={handleIframeLoad}
   allowFullScreen
 />
+</div>
       </div>
     </div>
           );
