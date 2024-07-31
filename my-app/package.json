@@ -1,5 +1,5 @@
 {
-  "name": "lisual-dashboard",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,9 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -44,9 +42,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
     "tailwindcss": "^3.4.4"
-  },
-  "homepage": "https://ffang0224.github.io/lisual-dashboard"
-  
+  }
 }
