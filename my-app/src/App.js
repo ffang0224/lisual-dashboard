@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bell, ChevronDown, Camera, Clock, Archive, ChevronLeft, ChevronRight, Home, Users, Settings, CreditCard, HelpCircle } from 'lucide-react';
 import Calendar from './Calendar.js';
 import './App.css'
-import logo from './media/lisual-logo.png';
+import logo from './media/lisualpro.png';
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from './firebase-config';
 import ImageGallery from './ImageGallery.js';
@@ -65,13 +65,17 @@ const ConstructionDashboard = () => {
           return(
             <div className="h-full flex flex-col">
       <h2 className="text-2xl font-semibold mb-4">Inicio</h2>
-      <div className="flex justify-center content-center w-full h-screen">
+      <div className="flex justify-center content-center w-full h-screen overflow-hidden">
         <iframe
-          src={userdata.livecamURL}
-          title="Live Image"
-          className="w-7/8 h-7/8 aspect-video rounded-lg"
-          allowFullScreen
-        />
+  src={userdata.livecamURL}
+  title="Live Image"
+  className={`rounded-lg ${
+    userdata.orientation === 'vertical' 
+      ? 'w-1/2 h-screen' 
+      : 'w-7/8 h-7/8 aspect-video overflow-hidden'
+  }`}
+  allowFullScreen
+/>
       </div>
     </div>
           );
@@ -112,7 +116,7 @@ const ConstructionDashboard = () => {
       {/* Sidebar */}
       <div className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-blue-600 text-white p-4 transition-all duration-300 ease-in-out`}>
         <div className="mb-8 flex items-center justify-between">
-          {isSidebarOpen && <h1 className="text-2xl font-bold">LISUAL Pro</h1>}
+          {isSidebarOpen && <img src={logo} className='pt-5 w-3/4'></img>}
           <button onClick={toggleSidebar} className="p-2 rounded-full hover:bg-blue-700">
             {isSidebarOpen ? <ChevronLeft /> : <ChevronRight />}
           </button>

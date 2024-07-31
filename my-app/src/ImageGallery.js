@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Download } from 'lucide-react';
 
 const ImageGallery = ({ selectedDate }) => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
-  const feedId = "fekiizlmvw6b";
+  const feedId = "fekwngayvxwn";
   const apiKey = "HWN2M2mcbZoyFDTfpaskQV9TBDk0Ir8bu4XWDxJQiBE";
   const apiBaseUrl = "https://www.teleport.io/api/v2";
 
@@ -64,10 +65,15 @@ const ImageGallery = ({ selectedDate }) => {
     <div>
       <div className="mb-4">Se han encontrado {images.length} imagenes para el dia {selectedDate.toDateString()}</div>
       <div className="mb-4 font-bold">Atencion! Espere unos segundos a que la imagen cargue.</div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image, index) => (
-          <div key={index} className="relative cursor-pointer">
-            <a target="_blank" rel="noopener noreferrer" download onClick={()=> download(image)}>
+          <div key={index} className="relative group">
+            <div 
+  className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  onClick={() => download(image)}
+>
+  <Download className="text-white w-12 h-12 cursor-pointer" />
+</div>
               <div className="absolute top-2 left-2 bg-white bg-opacity-70 p-1 rounded text-xs">
                 {new Date(image.timestamp).toLocaleTimeString()}
               </div>
@@ -80,8 +86,6 @@ const ImageGallery = ({ selectedDate }) => {
                   e.target.src = 'https://via.placeholder.com/150?text=Image+Load+Error';
                 }}
               />
-              <span className="absolute bottom-2 right-2 text-white text-xl cursor-pointer" title="Download">⬇</span>
-            </a>
           </div>
         ))}
       </div>
